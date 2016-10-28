@@ -11,7 +11,7 @@ public class Reader extends JFrame{
     JTextField t1,t2;
     int i,k;
     String a,b;
-    MyListener myLis= new MyListener();
+    MyListener myLis= new MyListener();//силка на обєкт
     //String line1,line2;
     public Reader(String s){
         super(s);
@@ -36,30 +36,32 @@ public class Reader extends JFrame{
         add(l4);
         add(b2);
         add(b1);
-        b2.addActionListener(myLis);
+        b2.addActionListener(myLis);// додати кнопці Listener
         b1.addActionListener(myLis);
     }
 public class MyListener implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {//метод визивається коли щось виконується на ПК
-        if (e.getSource()==b2){ //повертає значення і == кнопці підрахувати
-            i=Integer.parseInt(t1.getText());
-            k=Integer.parseInt(t2.getText());
-            i++;
-            k++;
-            l3.setText(a);
-            l4.setText(b);
-            a="Ваше перше число = "+i;
-            b="Наступне число = "+k;
-             }
-             if (e.getSource()==b1){
-                 t1.setText(null);
-                 t2.setText(null);
-                 l3.setText(null);
-                 l4.setText(null);
+        try {
+            if (e.getSource() == b2) { //повертає значення і == кнопці підрахувати
+                i = Integer.parseInt(t1.getText());
+                k = Integer.parseInt(t2.getText());
+                i++;
+                k++;
+                l3.setText(a);
+                l4.setText(b);
+                a = "Ваше перше число = " + i;
+                b = "Наступне число = " + k;
+            }
+            if (e.getSource() == b1) {
+                t1.setText(null);
+                t2.setText(null);
+                l3.setText(null);
+                l4.setText(null);
 
-             }
+            }
+        } catch (Exception ex){JOptionPane.showMessageDialog(null,"Введіть в поле число! ");}
     }
 }
 
